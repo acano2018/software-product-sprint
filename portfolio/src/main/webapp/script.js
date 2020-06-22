@@ -36,6 +36,7 @@ function getData() {
   // When the request is complete, pass the response into handleResponse().
   responsePromise.then(handleResponse);
 }
+
 function handleResponse(response) {
   console.log('Handling the response.');
 
