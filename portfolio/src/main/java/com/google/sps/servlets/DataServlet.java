@@ -25,34 +25,36 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-    ArrayList<String> messages = new ArrayList<String>(){ 
-            { 
-                add("Daisy says to take a sec"); 
-                add("Jimmy loves pinky dinky doo"); 
-                add("Finish your work!"); 
-            } 
-    }; 
-
+    ArrayList<String> comments = new ArrayList<String>(); 
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String json = "{";
-    json += "\"Message One\": ";
-    json += "\"" + messages.get(0) + "\"";
-    json += ", ";
-    json += "\"Message Two\": ";
-    json += "\"" + messages.get(1) + "\"";
-    json += ", ";
-    json += "\"Message Three\": ";
-    json += messages.get(2);
+    String json = "{"; 
+    for(int x = 0; x < comments.size(); x++){
+        json += "\"Comment\": ";
+        json += "\"" + comments.get(x) + "\"";
+    }
     json += "}"; 
 
     response.setContentType("text/html;");
     response.getWriter().println(json);
   }
+  
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String text = getParameter(request, "text-input", "");
 
+    comments.add(text); 
+    response.sendRedirect("index.html");
+  }
 
-
-
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
+  }
   
 }
