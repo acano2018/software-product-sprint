@@ -37,18 +37,7 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    /*
-    String json = "{"; 
-    for(int x = 0; x < comments.size(); x++){
-        json += "\"Comment\": ";
-        json += "\"" + comments.get(x) + "\"";
-    }
-    json += "}"; 
-
-    response.setContentType("text/html;");
-    response.getWriter().println(json);
-    */
-    //
+    
     Query query = new Query("Task").addSort("timestamp", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -80,8 +69,6 @@ public class DataServlet extends HttpServlet {
     // Get the input from the form.
     String text = getParameter(request, "text-input", "");
 
-//
-    //String title = request.getParameter("title");
     long timestamp = System.currentTimeMillis();
 
     Entity taskEntity = new Entity("Task");
@@ -91,8 +78,6 @@ public class DataServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(taskEntity);
 
-//
-    //comments.add(text); 
     response.sendRedirect("index.html");
   }
 
