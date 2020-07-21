@@ -38,11 +38,21 @@
       <p>Puebla, Mexico.</p>
       <img src="images/mexico.jpg" alt="Green Hill" style="width:500px;height:600px;">
       <button onclick="addRandomGreeting()">Favorite Books</button>
+       <button onclick="getData()">Greetings From Me</button>
       <div id="greeting-container"></div>
 
       <p>These are some of the places I've visited!</p>
       <div id="map"></div>
 
+
+      <form action="/data" method="POST">
+
+        <p>Enter your comment:</p> 
+        <textarea name="text-input"></textarea>
+        <br/><br/>
+
+        <input type="submit" />
+      </form>
     </div>
   </body>
 </html>
