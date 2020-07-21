@@ -27,6 +27,56 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
+function initMap() {
+    var cords = {lat: 37.0902, lng: -95.7129};
+    var map = new google.maps.Map(document.getElementById('map'), {
+     zoom: 4,
+       center: cords
+    });
+
+        addMarker(
+          {coords:{lat:48.8566, lng:-2.3522}, 
+          content: 'Paris, France'
+        }); 
+        addMarker(
+          {coords:{lat:34.0522, lng:-118.2437}, 
+          content: 'Los Angeles, CA'
+        }); 
+        addMarker(
+          {coords:{lat:19.4326, lng:-99.1332}, 
+          content: 'Mexico City, Mexico'
+        });
+        addMarker(
+          {coords:{lat:19.0414, lng:-98.2063}, 
+          content: 'Puebla, Mexico'
+        });
+        addMarker(
+          {coords:{lat:40.7128, lng:-74.0060}, 
+          content: 'New York City, NY'
+        });
+
+
+    function addMarker(props){
+        var marker = new google.maps.Marker({
+        position: props.coords,
+        map: map,
+        });
+
+        if(props.content){
+            var infowindow = new google.maps.InfoWindow({
+            content: props.content
+        });
+
+        marker.addListener('click', function() {
+        infowindow.open(map, marker);
+        });
+        }
+
+    }
+
+}
+
+=======
 function getData() {
   console.log('Getting a message from data page');
 

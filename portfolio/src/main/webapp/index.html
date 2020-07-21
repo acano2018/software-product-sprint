@@ -3,10 +3,18 @@
   <head>
     <meta charset="UTF-8">
     <title>Aileen's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6EPpSPCTfaYS8Qh9HXFjNc14GDF7DYR4&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+
   </head>
   <body>
+      
     <div id="content">
       <h1>Aileen's Portfolio</h1>
       <p> My name is Aileen and I'm a rising junior at Columbia University studying computer science.</p>
@@ -21,6 +29,8 @@
       
       <a href="https://github.com/acano2018">Github Profile</a>
 
+      
+
       <p>Click here to get a random message:</p>
       <img src="images/aileen.jpg"/>
       <p>Columbia University campus sunset</p>
@@ -30,6 +40,9 @@
       <button onclick="addRandomGreeting()">Favorite Books</button>
        <button onclick="getData()">Greetings From Me</button>
       <div id="greeting-container"></div>
+
+      <p>These are some of the places I've visited!</p>
+      <div id="map"></div>
 
 
       <form action="/data" method="POST">
